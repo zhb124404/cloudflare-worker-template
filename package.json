@@ -1,0 +1,11 @@
+{
+  "name": "cloudflare-worker-template",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "author": "dream",
+  "devDependencies": {},
+  "dependencies": {
+    "qr-image": "^3.2.0"
+  }
+}
