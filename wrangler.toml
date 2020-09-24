@@ -1,3 +1,5 @@
+# will deploy to name.domain.workers.dev
+name = "test"
 type = "webpack"
 account_id = ""
 workers_dev = true
