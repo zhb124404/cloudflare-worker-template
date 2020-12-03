@@ -1,24 +1,24 @@
 /**
- * @name Ëæ»úĞ¡Ëµ
- * @description ´ÓÖªĞù²ØÊéËæ»ú»ñÈ¡Êé¼®
+ * @name éšæœºå°è¯´
+ * @description ä»çŸ¥è½©è—ä¹¦éšæœºè·å–ä¹¦ç±
  */
 
 const cheerio = require('cheerio')
 const iconv = require('iconv-lite')
 const sourceUrl = 'http://www.zxcs.me'
 
-// Ä¬ÈÏÈë¿Ú
+// é»˜è®¤å…¥å£
 addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request))
 })
 
-// ´¦ÀíÂß¼­
+// å¤„ç†é€»è¾‘
 async function handleRequest (request) {
   const $ = cheerio.load(await getDom(sourceUrl))
   let randomEl = $('#randlog').html()
-  let outHtml = '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Ëæ»úĞ¡Ëµ</title><style>    ul,ol,li {      list-style: none;    }    body {      font-size: 16px;    }    .box {      border: 1px #DDD dashed;      background: #FFF;    }    a {      color: #222;      text-decoration: none;    }    a:hover {      color: #C30    }</style></head><body><div class="box">'
+  let outHtml = '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>éšæœºå°è¯´</title><style>    ul,ol,li {      list-style: none;    }    body {      font-size: 16px;    }    .box {      border: 1px #DDD dashed;      background: #FFF;    }    a {      color: #222;      text-decoration: none;    }    a:hover {      color: #C30    }</style></head><body><div class="box">'
   outHtml += randomEl
-  outHtml += '<button onclick="location.reload();" style="margin-left: 40%;margin-top: 20px;">»»Ò»Åú</button></div></body></html>'
+  outHtml += '<button onclick="location.reload();" style="margin-left: 40%;margin-top: 20px;">æ¢ä¸€æ‰¹</button></div></body></html>'
   return new Response(outHtml, { headers: { "Content-Type": "text/html;charset=utf-8","Access-Control-Allow-Origin": "*" } })
 
   // let books = []
@@ -34,13 +34,13 @@ async function handleRequest (request) {
   // return new Response(JSON.stringify(books), { headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" } })
 }
 
-// »ñÈ¡Ò³Ãæhtml
+// è·å–é¡µé¢html
 async function getDom (url) {
   let requestNew = new Request(url)
-  // ÇëÇóPC¶ËÒ³Ãæ
+  // è¯·æ±‚PCç«¯é¡µé¢
   requestNew.headers.set("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.75 Safari/537.36")
   let response = await fetch(requestNew)
-  //¸ù¾İÒ³Ãæ±àÂë½âÎöÒ³ÃæhtmlÔ´Âë
+  //æ ¹æ®é¡µé¢ç¼–ç è§£æé¡µé¢htmlæºç 
   const contentType = response.headers.get('Content-Type')
   let charset = 'utf-8'
   if (contentType) {

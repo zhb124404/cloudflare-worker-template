@@ -1,5 +1,5 @@
 # will deploy to name.domain.workers.dev
-name = "9txs"
+name = "randomtxt"
 type = "webpack"
 account_id = "9a3a86112b1aba2197b658472122d620"
 workers_dev = true
