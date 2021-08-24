@@ -14,6 +14,7 @@ const corsHeaders = {
   "Access-Control-Allow-Methods": "GET,HEAD,POST,OPTIONS",
   "Access-Control-Max-Age": "86400",
 }
+const TOKEN_EXPIRE = 600 // token时长（秒）
 // 默认入口
 addEventListener("fetch", event => {
   const request = event.request
@@ -263,7 +264,7 @@ async function login (params) {
       let token = 'token-' + new Date().getTime().toString().slice(-6)
       token = token + Math.floor(Math.random() * 10000).toString()
       // expirationTtl token生效时长（秒）
-      await KV.put(token, id, { expirationTtl: 300 })
+      await KV.put(token, id, { expirationTtl: TOKEN_EXPIRE })
       return { token, code: '0000' }
     } else {
       return { msg: 'login failed!', code: '0001' }
