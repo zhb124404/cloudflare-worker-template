@@ -14,12 +14,15 @@ addEventListener("fetch", event => {
 
 // 处理逻辑
 async function handleRequest (request) {
-  const $ = cheerio.load(await getDom(sourceUrl))
-  let randomEl = $('#randlog').html()
+  let randomEl = ''
+  for (let i = 0; i < 2; i++) {
+    const $1 = cheerio.load(await getDom(sourceUrl))
+    randomEl += $1('#randlog').html()
+  }
   let outHtml = '<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>随机小说</title><style>    ul,ol,li {      list-style: none;    }    body {      font-size: 16px;    }    .box {      border: 1px #DDD dashed;      background: #FFF;    }    a {      color: #222;      text-decoration: none;    }    a:hover {      color: #C30    }</style></head><body><div class="box">'
   outHtml += randomEl
-  outHtml += '<button onclick="location.reload();" style="margin-left: 40%;margin-top: 20px;">换一批</button></div></body></html>'
-  return new Response(outHtml, { headers: { "Content-Type": "text/html;charset=utf-8","Access-Control-Allow-Origin": "*" } })
+  outHtml += '<button onclick="location.href=`https://randomtxt.dreamoon.workers.dev?t=${new Date().getTime()}`;" style="margin-left: 40%;margin-top: 20px;">换一批</button></div></body></html>'
+  return new Response(outHtml, { headers: { "Content-Type": "text/html;charset=utf-8", "Access-Control-Allow-Origin": "*" } })
 
   // let books = []
   // $('#randlog>li').each((i, el) => {
